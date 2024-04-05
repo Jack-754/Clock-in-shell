@@ -1,12 +1,7 @@
 #!/bin/bash
 
-#code is mainly working on my pc but sometimes it stops working. In such a case try re running the code few times
-
-
-
 declare -a tim
 declare -a day
-declare -a arr
 declare -a l1
 declare -a l2
 declare -a l3
@@ -20,17 +15,12 @@ l5=('  ---  ' '     . ' '  ---  ' '  ---  ' '     . ' '  ---  ' '  ---  ' '     
 n=0
 
 
-stty intr ^M
+stty intr ^M  #disables control + c to terminate and replaces with enter key
 while [ $n -le 100000 ]; do 
-arr=(`date +"%A %d %B %Y %I %M %S %p"`)
-if [ $((n%2)) -eq 0 ];then
-arr=(${arr[@]:0:6}:${arr[@]:6})
-arr=(${arr[@]:0:5}:${arr[@]:5})
-fi
+
 day=(`date +"%A %d %B %Y"`)
 tim=(`date +"%I %M %S"`)
 am=(`date +"%p"`)
-# i=0
 i=0
 space=''
 col=$((COLUMNS/2-47/2))
@@ -135,15 +125,7 @@ temp=''
 temp="$space"
 temp+="+---------------------------------------------+"
 echo "$temp"
-# echo ${arr[@]}
-# echo $n
-sleep 0.5
+sleep 1
 clear
 n=$((n+1))
 done
-
-
-# arr=(`date +"%A %d %B %Y %I %M %S %p"`)
-# echo ${arr[@]}
-
-
